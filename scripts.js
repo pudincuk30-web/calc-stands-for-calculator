@@ -18,7 +18,7 @@ function divide(first, second){
 
 let numOne = 0;
 let numTwo = 0;
-let operator = 0;
+let operator;
 console.log(`numOne is ${typeof numOne}`)
 // ok lets just turn textcontent into number first 
 // wait we'll just keep it as a string until we need to operate them
@@ -31,6 +31,27 @@ buttons.forEach(function(button){
         console.log(`${numOne}, it is a ${typeof numOne}`);
     })
 })
+// change value instead of adding it up
+let opButtons = document.querySelectorAll(".operators button")
+opButtons.forEach(function(button){
+    button.addEventListener("click", function(e){
+        let num = button.textContent
+        switch(num){
+            case "X":
+                num = "*"
+                break;
+            case "÷":
+                num = "/"
+                break;
+        }
+        numOne = num;
+        console.log(`${numOne}, it is a ${typeof numOne}`);
+    })
+})
+
+// now when that is pressed we'll need to make it switch to inputting numTwo
+// make a variable that sets the state
+// if state is true then textContent will be put inside second button
 
 
 function operate(numOne, operator, numTwo){
