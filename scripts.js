@@ -25,6 +25,7 @@ let buttons = document.querySelectorAll(".numbers button")
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
         let num = button.textContent
+        // make a check to reset display if result is detected
         switch (operator){
             case undefined:
                 numOne += num;
@@ -34,19 +35,46 @@ buttons.forEach(function(button){
                 numTwo += num;
                 console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
         }
+        if(result !== undefined){
+            display.textContent = undefined;
+        }
         display.textContent += num;
         
     })
 })
 // change value instead of adding it up
+// this is how i think the algo works
+// user clicks numberOne
+// user clicks operator
+// user clicks numberTwo
+// user clicks operator again
+// numOne gets changed to result of operate function
+// when "=" is pressed the results will be displayed
+// and followUpPress will be set to false
+// assume theres no bugs for now
 let opButtons = document.querySelectorAll(".operators button");
 let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
+        // make a function that checks if user pressed =
+        // if they did, make it print the results, set followUpPress to false, and return the function
+        // i should just make it so pressing equal resets everything smh
+        let tempOperator = button.textContent;
         if(followUpPress === true){
+            if (tempOperator === "="){
+                numOne = operate(numOne, operator, numTwo);
+                console.log(numOne, "equal detected");
+                let result = numOne;
+                operator = undefined;
+                numOne = 0;
+                numTwo = 0;
+                followUpPress = false;
+                return display.textContent = result;
+            } else{
             numOne = operate(numOne, operator, numTwo)
             console.log(numOne);
             numTwo = 0;
+            }
         }
         operator = button.textContent
         switch(operator){
@@ -56,6 +84,9 @@ opButtons.forEach(function(button){
             case "÷":
                 operator = "/"
                 break;
+            case "=":
+                display.textContent = numOne;
+                followUpPress = false;
             default:
         }
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
