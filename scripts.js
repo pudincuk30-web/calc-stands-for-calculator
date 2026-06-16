@@ -21,7 +21,10 @@ let numTwo = 0;
 let operator;
 
 let display = document.querySelector(".numDisplay p");
-let buttons = document.querySelectorAll(".numbers button")
+let buttons = document.querySelectorAll(".numbers button");
+
+// now lets make delete and clear work :D
+// we'll start by giving them both a special class so they wont be inside buttons variable
 
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
@@ -31,18 +34,43 @@ buttons.forEach(function(button){
             operator = undefined;
             display.textContent = undefined;
         }
+
         let num = button.textContent
-        
-        switch (operator){
-            case undefined:
-                numOne += num;
-                console.log(`numOne is ${numOne}, it is a ${typeof numOne}`)
-                break;
-            default:
-                numTwo += num;
-                console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
+        switch(num){
+            case "CLR" :
+                display.textContent = undefined;
+                operator = undefined;
+                numOne = 0;
+                numTwo = 0;
+                return;
+            case "DEL" :
+                // numOne is a string
+                // cutnumOne
+                // then set numOne to display hehehehe
+                let cutNum = display.textContent.slice(0, length - 1);
+                display.textContent = cutNum;
+                switch(operator){
+                    case undefined:
+                        numOne = 0 + cutNum
+                        break;
+                    default:
+                        numTwo = 0 + cutNum;
+                        break;
+                }
+                return;
+
         }
-        display.textContent += num;
+            display.textContent += num;
+            switch (operator){
+                case undefined:
+                    numOne += num;
+                    console.log(`numOne is ${numOne}, it is a ${typeof numOne}`)
+                    break;
+                default:
+                    numTwo += num;
+                    console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
+            }
+        
         
     })
 })
