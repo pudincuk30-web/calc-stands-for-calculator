@@ -36,3 +36,4 @@ function operate(numOne, operator, numTwo){
             break;
     }
 }
+// now we make buttons
