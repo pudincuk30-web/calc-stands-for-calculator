@@ -19,10 +19,7 @@ function divide(first, second){
 let numOne = 0;
 let numTwo = 0;
 let operator;
-console.log(`numOne is ${typeof numOne}`)
-// ok lets just turn textcontent into number first 
-// wait we'll just keep it as a string until we need to operate them
-// in that case keeping them as a string shall be alright!
+
 let display = document.querySelector(".numDisplay p");
 let buttons = document.querySelectorAll(".numbers button")
 buttons.forEach(function(button){
@@ -42,9 +39,14 @@ buttons.forEach(function(button){
     })
 })
 // change value instead of adding it up
-let opButtons = document.querySelectorAll(".operators button")
+let opButtons = document.querySelectorAll(".operators button");
+let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
+        if(followUpPress === true){
+            operate(numOne, operator, numTwo)
+            console.log(numOne);
+        }
         operator = button.textContent
         switch(operator){
             case "X":
@@ -57,13 +59,17 @@ opButtons.forEach(function(button){
         }
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
         display.textContent = undefined
+        followUpPress = true
         
     })
 })
 
-// now when that is pressed we'll need to make it switch to inputting numTwo
-// make a variable that sets the state
-// if state is true then textContent will be put inside second button
+// i want to make operate run whenever operator is pressed for the second time
+// but the result should only be displayed when you press 
+// make a variable that tells if secondpress is true or false
+// if true then run operate 
+// after running operate change to newly pressed button
+// i will also make the result value be equal to numOne
 
 
 function operate(numOne, operator, numTwo){
