@@ -17,3 +17,17 @@
     height:150px;
     background-color: rgb(47, 58, 107);
 }
+
+.buttonContainer{
+    display: flex;
+    width:inherit;
+    flex: 1;
+    background-color: rgb(52, 70, 153);
+    gap: 10px;
+}
+
+.button{
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1;
+}
