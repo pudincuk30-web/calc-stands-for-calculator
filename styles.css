@@ -32,6 +32,7 @@
     flex: 1;
     justify-content: center;
     gap: 5px;
+    background-color:rgb(52, 70, 153); ;
 }
 
 .buttonContainer button{
@@ -40,15 +41,25 @@
     color: whitesmoke
 }
 
+.numbers button{
+    width: 100px;
+    height: 100px;
+}
+/* number buttons arent spread all the way to bottom */
+/* hehe button bottom */
 
 /* make operator buttons go vertical */
 
 .operators{
     flex-flow: column wrap;
     align-items: end;
+    justify-content: space-between;
+    flex:0.5;
     /* buttons stick to the left atm */
 }
 
 .numbers{
     flex: 2;
+    align-content: space-between;
+    justify-content: space-between;
 }
