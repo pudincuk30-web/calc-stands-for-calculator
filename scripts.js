@@ -44,8 +44,9 @@ let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
         if(followUpPress === true){
-            operate(numOne, operator, numTwo)
+            numOne = operate(numOne, operator, numTwo)
             console.log(numOne);
+            numTwo = 0;
         }
         operator = button.textContent
         switch(operator){
@@ -64,27 +65,24 @@ opButtons.forEach(function(button){
     })
 })
 
-// i want to make operate run whenever operator is pressed for the second time
-// but the result should only be displayed when you press 
-// make a variable that tells if secondpress is true or false
-// if true then run operate 
-// after running operate change to newly pressed button
-// i will also make the result value be equal to numOne
+
 
 
 function operate(numOne, operator, numTwo){
+    let intNumOne = parseInt(numOne);
+    let intNumTwo = parseInt(numTwo);
     switch(operator){
         case "+" :
-            return add(numOne, numTwo);
+            return add(intNumOne, intNumTwo);
             break;
         case "-" :
-            return subtract(numOne, numTwo);
+            return subtract(intNumOne, intNumTwo);
             break;
         case "*" :
-            return multiply(numOne, numTwo);
+            return multiply(intNumOne, intNumTwo);
             break;
         case "/":
-            return divide(numOne, numTwo);
+            return divide(intNumOne, intNumTwo);
             break;
     }
 }
