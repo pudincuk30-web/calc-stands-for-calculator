@@ -27,25 +27,34 @@ let buttons = document.querySelectorAll(".numbers button")
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
         let num = button.textContent
-        numOne += num;
-        console.log(`${numOne}, it is a ${typeof numOne}`);
+        switch (operator){
+            case undefined:
+                numOne += num;
+                console.log(`numOne is ${numOne}, it is a ${typeof numOne}`)
+                break;
+            default:
+                numTwo += num;
+                console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`)
+        }
+        ;
     })
 })
 // change value instead of adding it up
 let opButtons = document.querySelectorAll(".operators button")
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
-        let num = button.textContent
-        switch(num){
+        operator = button.textContent
+        switch(operator){
             case "X":
-                num = "*"
+                operator = "*"
                 break;
             case "÷":
-                num = "/"
+                operator = "/"
                 break;
+            default:
         }
-        numOne = num;
-        console.log(`${numOne}, it is a ${typeof numOne}`);
+        console.log(`operator is ${operator}, it is a ${typeof operator}`);
+        
     })
 })
 
