@@ -16,9 +16,22 @@ function divide(first, second){
     return first / second;
 }
 
-let numOne;
-let numTwo;
-let operator;
+let numOne = 0;
+let numTwo = 0;
+let operator = 0;
+console.log(`numOne is ${typeof numOne}`)
+// ok lets just turn textcontent into number first 
+// wait we'll just keep it as a string until we need to operate them
+// in that case keeping them as a string shall be alright!
+let buttons = document.querySelectorAll(".numbers button")
+buttons.forEach(function(button){
+    button.addEventListener("click", function(){
+        let num = button.textContent
+        numOne += num;
+        console.log(`${numOne}, it is a ${typeof numOne}`);
+    })
+})
+
 
 function operate(numOne, operator, numTwo){
     switch(operator){
@@ -36,4 +49,3 @@ function operate(numOne, operator, numTwo){
             break;
     }
 }
-// now we make buttons
