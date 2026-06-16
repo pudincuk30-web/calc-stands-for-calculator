@@ -30,4 +30,25 @@
     display: flex;
     flex-flow: row wrap;
     flex: 1;
+    justify-content: center;
+    gap: 5px;
+}
+
+.buttonContainer button{
+    width : 80px;
+    height: 80px;
+    color: whitesmoke
+}
+
+
+/* make operator buttons go vertical */
+
+.operators{
+    flex-flow: column wrap;
+    align-items: end;
+    /* buttons stick to the left atm */
+}
+
+.numbers{
+    flex: 2
 }
