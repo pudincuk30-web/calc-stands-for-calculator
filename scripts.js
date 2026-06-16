@@ -22,15 +22,17 @@ let operator;
 
 let display = document.querySelector(".numDisplay p");
 let buttons = document.querySelectorAll(".numbers button")
+
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
+        // make a check to reset display
         if(operator === "="){
             console.log("equal detected on buttonpress")
             operator = undefined;
             display.textContent = undefined;
         }
         let num = button.textContent
-        // make a check to reset display if result is detected
+        
         switch (operator){
             case undefined:
                 numOne += num;
@@ -49,16 +51,9 @@ let opButtons = document.querySelectorAll(".operators button");
 let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
-
-        // make a variable called tempOperator that remembers previous operator value
-        // at first when followUpPress isnt on it will run to the bottom
-        // so every switch case will store the valu eto previousOperator
         let tempOperator = button.textContent;
         if(followUpPress === true){
             if (tempOperator === "="){
-                // tempOperator gets reset every buttonpress
-                // a pontential solution would be to place it outside but theres already so much global variables :sob:
-                // just set operator to equal brah
                 numOne = operate(numOne, operator, numTwo);
                 console.log(numOne, "equal detected");
                 let result = numOne;
