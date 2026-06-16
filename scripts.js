@@ -23,6 +23,7 @@ console.log(`numOne is ${typeof numOne}`)
 // ok lets just turn textcontent into number first 
 // wait we'll just keep it as a string until we need to operate them
 // in that case keeping them as a string shall be alright!
+let display = document.querySelector(".numDisplay p");
 let buttons = document.querySelectorAll(".numbers button")
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
@@ -34,9 +35,10 @@ buttons.forEach(function(button){
                 break;
             default:
                 numTwo += num;
-                console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`)
+                console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
         }
-        ;
+        display.textContent += num;
+        
     })
 })
 // change value instead of adding it up
@@ -54,6 +56,7 @@ opButtons.forEach(function(button){
             default:
         }
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
+        display.textContent = undefined
         
     })
 })
