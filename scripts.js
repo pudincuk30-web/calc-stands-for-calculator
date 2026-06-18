@@ -109,6 +109,7 @@ opButtons.forEach(function(button){
             case "=":
                 display.textContent = numOne;
                 followUpPress = false;
+                return;
             default:
         }
         tempOperator = operator;
