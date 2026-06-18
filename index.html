@@ -12,40 +12,43 @@
     <h2>You can count on me to calculate numbers :)</h2>
     <div class="calcContainer">
          <!-- numDisplay and buttoncontainer shall be displayed as a row -->
-        <div class="numDisplay">
-            <p></p>
+        <div class="leftSide">
+            <div class="numDisplay">
+                <p></p>
+            </div>
+            <div class="buttonContainer">
+                <!-- buttons will be displayed in a colum n -->
+                <!-- split will be horizontal now, left side is display and numbers, right side are operators -->
+                <div class="button numbers">
+                    <div class="button column">
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button> 
+                    </div>
+                    <div class="button column">
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                    </div>
+                    <div class="button column">
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                    </div>
+                    <div class="button column">
+                        <button class ="special">CLR</button>
+                        <button>0</button>
+                        <button class = "special">DEL</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="buttonContainer">
-            <!-- buttons will be displayed in a colum n -->
-            <div class="button numbers">
-                <div class="button column">
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button> 
-                </div>
-                <div class="button column">
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                </div>
-                <div class="button column">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                </div>
-                <div class="button column">
-                    <button class ="special">CLR</button>
-                    <button>0</button>
-                    <button class = "special">DEL</button>
-                </div>
-            </div>
-            <div class="button operators">
-                <button>+</button>
-                <button>-</button>
-                <button>X</button>
-                <button>÷</button>
-                <button>=</button>
-            </div>
+        <div class="button operators">
+            <button>+</button>
+            <button>-</button>
+            <button>X</button>
+            <button>÷</button>
+            <button>=</button>
         </div>
 
     </div>
