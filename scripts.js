@@ -93,6 +93,14 @@ opButtons.forEach(function(button){
                 followUpPress = false;
                 return display.textContent = result;
             } else{
+                if(numOne === "AGEMASEN!!!!!"){
+                console.log("previous value divided by zero, restting..")
+                operator = "="
+                numOne = 0;
+                numTwo = 0;
+                followUpPress = false;
+                return display.textContent = "AGEMASEN!!!!!";
+                }
             numOne = operate(numOne, operator, numTwo)
             console.log(numOne);
             numTwo = 0;
@@ -144,3 +152,5 @@ function operate(numOne, operator, numTwo){
             break;
     }
 }
+
+// error only happens when you press functions other than = after dividing by zero
