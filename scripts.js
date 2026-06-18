@@ -83,6 +83,21 @@ opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
         let tempOperator = button.textContent;
         console.log("follow up press == ", followUpPress)
+        // this should make "." never be registered as an operator
+        if(tempOperator === "."){
+            let currentNum = numTwo === 0 ? numOne : numTwo;
+            let currentArr = currentNum.split("")
+            console.log(currentArr);
+            currentArr.includes(".") === true ? currentArr : currentArr.push(".");
+            console.log(currentArr);
+            if(numTwo === 0){
+                numOne = currentArr.join("");
+                operator = undefined;
+            } else {
+                numTwo = currentArr.join("");
+            }
+            return display.textContent = parseFloat(currentArr.join(""));
+        }
         if(followUpPress === true && numTwo !== 0){
             if (tempOperator === "="){
                 numOne = operate(numOne, operator, numTwo);
@@ -103,6 +118,7 @@ opButtons.forEach(function(button){
                 return display.textContent = "AGEMASEN!!!!!";
                 }
                 // cannot detect what operator it uses, skips the dot thing
+                // cannot add up two decimals because operator and tempoperator is set to .
             if (tempOperator !== "."){
                 numOne = operate(numOne, operator, numTwo);
                 console.log(numOne);
@@ -122,23 +138,7 @@ opButtons.forEach(function(button){
                 display.textContent = numOne;
                 followUpPress = false;
                 return;
-            case ".":
-                let currentNum = numTwo === 0 ? numOne : numTwo;
-                let currentArr = currentNum.split("")
-                console.log(currentArr);
-                currentArr.includes(".") === true ? currentArr : currentArr.push(".");
-                console.log(currentArr);
-                if(numTwo === 0){
-                    numOne = currentArr.join("");
-                    operator = undefined;
-                } else {
-                    numTwo = currentArr.join("");
-                }
-                return display.textContent = parseFloat(currentArr.join(""));
-                
-
-
-            default:
+                // perhaps i should move this all the way up to the followUpPress check
         }
         tempOperator = operator;
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
@@ -151,8 +151,8 @@ opButtons.forEach(function(button){
 
 
 function operate(numOne, operator, numTwo){
-    let intNumOne = parseInt(numOne);
-    let intNumTwo = parseInt(numTwo);
+    let intNumOne = parseFloat(numOne);
+    let intNumTwo = parseFloat(numTwo);
     switch(operator){
         case "+" :
             return add(intNumOne, intNumTwo);
