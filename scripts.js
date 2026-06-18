@@ -119,6 +119,29 @@ opButtons.forEach(function(button){
                 display.textContent = numOne;
                 followUpPress = false;
                 return;
+            case ".":
+                // make it return a float value that only accepts one decimal
+                // click button
+                // latest number will be added with decimal
+                // other numbers add
+                // press decimal again and it dont work
+                // will work again when decimal is deleted manually
+                // turn current number into object
+
+                // check if decimal exists first, we'll do it by using an array (fuckkk)
+                // its printing numTwo because false check
+                let currentNum = numTwo === 0 ? numOne : numTwo;
+                // turn currentnum into an array
+                let currentArr = currentNum.split("")
+                console.log(currentArr);
+                // find if . exists in array, just return it if yes, push if no
+                currentArr.includes(".") === true ? currentArr : currentArr.push(".");
+                console.log(currentArr);
+                // turn it back into string
+                 currentArr.join("");
+                
+
+
             default:
         }
         tempOperator = operator;
