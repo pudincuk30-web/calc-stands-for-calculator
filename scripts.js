@@ -138,7 +138,10 @@ opButtons.forEach(function(button){
                 currentArr.includes(".") === true ? currentArr : currentArr.push(".");
                 console.log(currentArr);
                 // turn it back into string
-                 currentArr.join("");
+                numTwo === 0 ? numOne = currentArr.join("") : numTwo = currentArr.join("");
+                // set operator back to undefined so it will continue filling numOne
+                operator = undefined;
+                return display.textContent = parseFloat(currentArr.join(""));
                 
 
 
