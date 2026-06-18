@@ -7,12 +7,18 @@
 
 .calcContainer{
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
     width: 400px;
     height: 400px;
     flex: 1;
     background-color: rgb(47, 58, 107);
     border:solid 2px white;
+}
+
+.leftSide{
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 2;
 }
 
 .numDisplay, .numDisplay p{
