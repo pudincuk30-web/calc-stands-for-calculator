@@ -102,9 +102,12 @@ opButtons.forEach(function(button){
                 followUpPress = false;
                 return display.textContent = "AGEMASEN!!!!!";
                 }
-            numOne = operate(numOne, operator, numTwo);
-            console.log(numOne);
-            numTwo = 0;
+                // cannot detect what operator it uses, skips the dot thing
+            if (tempOperator !== "."){
+                numOne = operate(numOne, operator, numTwo);
+                console.log(numOne);
+                numTwo = 0;
+            }
             }
         }
         operator = button.textContent;
@@ -120,27 +123,17 @@ opButtons.forEach(function(button){
                 followUpPress = false;
                 return;
             case ".":
-                // make it return a float value that only accepts one decimal
-                // click button
-                // latest number will be added with decimal
-                // other numbers add
-                // press decimal again and it dont work
-                // will work again when decimal is deleted manually
-                // turn current number into object
-
-                // check if decimal exists first, we'll do it by using an array (fuckkk)
-                // its printing numTwo because false check
                 let currentNum = numTwo === 0 ? numOne : numTwo;
-                // turn currentnum into an array
                 let currentArr = currentNum.split("")
                 console.log(currentArr);
-                // find if . exists in array, just return it if yes, push if no
                 currentArr.includes(".") === true ? currentArr : currentArr.push(".");
                 console.log(currentArr);
-                // turn it back into string
-                numTwo === 0 ? numOne = currentArr.join("") : numTwo = currentArr.join("");
-                // set operator back to undefined so it will continue filling numOne
-                operator = undefined;
+                if(numTwo === 0){
+                    numOne = currentArr.join("");
+                    operator = undefined;
+                } else {
+                    numTwo = currentArr.join("");
+                }
                 return display.textContent = parseFloat(currentArr.join(""));
                 
 
