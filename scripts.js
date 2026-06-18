@@ -123,7 +123,9 @@ opButtons.forEach(function(button){
         tempOperator = operator;
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
         display.textContent = undefined
+        if (numTwo !== 0){
         followUpPress = true
+    }
         
     })
 })
