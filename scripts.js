@@ -20,8 +20,8 @@ let numOne = 0;
 let numTwo = 0;
 let operator;
 
-let display = document.querySelector(".numDisplay p");
-let buttons = document.querySelectorAll(".numbers button");
+let display = document.querySelector(".leftSide .numDisplay p");
+let buttons = document.querySelectorAll(".leftSide .numbers button");
 
 // now lets make delete and clear work :D
 // we'll start by giving them both a special class so they wont be inside buttons variable
