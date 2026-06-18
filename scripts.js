@@ -61,14 +61,15 @@ buttons.forEach(function(button){
                 return;
 
         }
-            display.textContent += num;
             switch (operator){
                 case undefined:
                     numOne += num;
+                    display.textContent = parseFloat(numOne);
                     console.log(`numOne is ${numOne}, it is a ${typeof numOne}`)
                     break;
                 default:
                     numTwo += num;
+                    display.textContent = parseFloat(numTwo);
                     console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
             }
         
@@ -101,7 +102,7 @@ opButtons.forEach(function(button){
                 followUpPress = false;
                 return display.textContent = "AGEMASEN!!!!!";
                 }
-            numOne = operate(numOne, operator, numTwo)
+            numOne = operate(numOne, operator, numTwo);
             console.log(numOne);
             numTwo = 0;
             }
@@ -122,7 +123,7 @@ opButtons.forEach(function(button){
         }
         tempOperator = operator;
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
-        display.textContent = undefined
+        display.textContent = followUpPress === true ? numOne : undefined;
         followUpPress = true;
     })
 })
