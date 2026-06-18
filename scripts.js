@@ -82,7 +82,7 @@ opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
         let tempOperator = button.textContent;
         console.log("follow up press == ", followUpPress)
-        if(followUpPress === true){
+        if(followUpPress === true && numTwo !== 0){
             if (tempOperator === "="){
                 numOne = operate(numOne, operator, numTwo);
                 console.log(numOne, "equal detected");
@@ -123,10 +123,7 @@ opButtons.forEach(function(button){
         tempOperator = operator;
         console.log(`operator is ${operator}, it is a ${typeof operator}`);
         display.textContent = undefined
-        if (numTwo !== 0){
-        followUpPress = true
-    }
-        
+        followUpPress = true;
     })
 })
 
