@@ -23,14 +23,11 @@ let operator;
 let display = document.querySelector(".leftSide .numDisplay p");
 let buttons = document.querySelectorAll(".leftSide .numbers button");
 
-// now lets make delete and clear work :D
-// we'll start by giving them both a special class so they wont be inside buttons variable
 
 buttons.forEach(function(button){
     button.addEventListener("click", function(){
         // make a check to reset display
         if(operator === "="){
-            console.log("equal detected on buttonpress")
             operator = undefined;
             display.textContent = undefined;
         }
@@ -65,12 +62,10 @@ buttons.forEach(function(button){
                 case undefined:
                     numOne += num;
                     display.textContent = parseFloat(numOne);
-                    console.log(`numOne is ${numOne}, it is a ${typeof numOne}`)
                     break;
                 default:
                     numTwo += num;
                     display.textContent = parseFloat(numTwo);
-                    console.log(`numTwo is ${numTwo}, it is a ${typeof numTwo}`);
             }
         
         
@@ -82,14 +77,11 @@ let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
         let tempOperator = button.textContent;
-        console.log("follow up press == ", followUpPress)
         // this should make "." never be registered as an operator
         if(tempOperator === "."){
             let currentNum = numTwo === 0 ? numOne : numTwo;
             let currentArr = currentNum.split("")
-            console.log(currentArr);
             currentArr.includes(".") === true ? currentArr : currentArr.push(".");
-            console.log(currentArr);
             if(numTwo === 0){
                 numOne = currentArr.join("");
                 operator = undefined;
@@ -98,32 +90,27 @@ opButtons.forEach(function(button){
             }
             return display.textContent = parseFloat(currentArr.join(""));
         }
+
         if(followUpPress === true && numTwo !== 0){
             if (tempOperator === "="){
                 numOne = operate(numOne, operator, numTwo);
-                console.log(numOne, "equal detected");
                 let result = numOne;
                 operator = "="
                 numOne = 0;
                 numTwo = 0;
                 followUpPress = false;
                 return display.textContent = result;
-            } else{
+            } else {
                 if(numOne === "AGEMASEN!!!!!"){
-                console.log("previous value divided by zero, restting..")
                 operator = "="
                 numOne = 0;
                 numTwo = 0;
                 followUpPress = false;
                 return display.textContent = "AGEMASEN!!!!!";
                 }
-                // cannot detect what operator it uses, skips the dot thing
-                // cannot add up two decimals because operator and tempoperator is set to .
-            if (tempOperator !== "."){
+
                 numOne = operate(numOne, operator, numTwo);
-                console.log(numOne);
                 numTwo = 0;
-            }
             }
         }
         operator = button.textContent;
@@ -138,10 +125,9 @@ opButtons.forEach(function(button){
                 display.textContent = numOne;
                 followUpPress = false;
                 return;
-                // perhaps i should move this all the way up to the followUpPress check
         }
+
         tempOperator = operator;
-        console.log(`operator is ${operator}, it is a ${typeof operator}`);
         display.textContent = followUpPress === true ? numOne : undefined;
         followUpPress = true;
     })
