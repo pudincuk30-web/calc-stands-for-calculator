@@ -137,6 +137,9 @@ function operate(numOne, operator, numTwo){
             return multiply(intNumOne, intNumTwo);
             break;
         case "/":
+            if (numTwo == 0){
+                return "AGEMASEN!!!!!"
+            }
             return divide(intNumOne, intNumTwo);
             break;
     }
