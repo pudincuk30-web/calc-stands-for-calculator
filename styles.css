@@ -56,12 +56,21 @@
 }
 
 .operators{
-    flex-flow: row wrap;
-    align-items: end;
-    justify-content: space-between;
-    flex:0.5;
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    flex:0;
+    padding: 0 5px 0 5px
 
     /* buttons stick to the left atm */
+}
+
+.operators button{
+    display: flex;
+    flex: 0 1 auto;
+    width: 60px;
+    height: 60px;
 }
 
 .numbers{
