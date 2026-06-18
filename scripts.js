@@ -39,6 +39,7 @@ buttons.forEach(function(button){
         switch(num){
             case "CLR" :
                 display.textContent = undefined;
+                followUpPress = false;
                 operator = undefined;
                 numOne = 0;
                 numTwo = 0;
@@ -80,6 +81,7 @@ let followUpPress = false;
 opButtons.forEach(function(button){
     button.addEventListener("click", function(e){
         let tempOperator = button.textContent;
+        console.log("follow up press == ", followUpPress)
         if(followUpPress === true){
             if (tempOperator === "="){
                 numOne = operate(numOne, operator, numTwo);
